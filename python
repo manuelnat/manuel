@@ -1,0 +1,37 @@
+clc
+close all
+clear all
+
+tic
+sum=0;
+for i=[1:1:40000]
+    sum=sum+1;
+end
+t1=toc
+
+tic
+mult=1;
+for j=[1:1:500000]
+    mult=mult*2;
+end
+t2=toc
+
+T1=t1+t2
+
+tic
+sum=0;
+parfor i=[2:1:4]
+    sum=sum+1
+    disp(['Inter 1 -',num2str(i)]);
+end
+t1=toc
+
+tic
+mult=1;
+parfor j=[2:1:4]
+    mult=mult*2
+    disp(['Inter 2 -',num2str(j)]);
+end
+t2=toc
+
+T2=t1+t2
